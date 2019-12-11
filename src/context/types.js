@@ -1,0 +1,5 @@
+export const SEARCH_CHARACTERS = 'SEARCH_CHARACTERS'
+export const GET_CHARACTER = 'GET_CHARCTER'
+export const SET_LOADING = 'SET_LOADING'
+export const SET_ALERT = 'SET_ALERT'
+export const REMOVE_ALERT = 'REMOVE_ALERT'
