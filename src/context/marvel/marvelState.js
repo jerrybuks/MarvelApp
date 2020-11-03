@@ -35,8 +35,7 @@ import { SEARCH_CHARACTERS, SET_LOADING  } from '../types';
 			.createHash('md5')
 			.update(`${ts}${privateKey}${publicKey}`)
             .digest('hex');
-            console.log(tx, publicKey, privateKey, hash)
-        console.log(axios)
+
         if(tx){
             const { data: { data } } = await axios.get(
                 `https://gateway.marvel.com:443/v1/public/characters?&ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=${30}`,
@@ -46,14 +45,13 @@ import { SEARCH_CHARACTERS, SET_LOADING  } from '../types';
                     }
                 }
             );
-            console.log(data)
+
             const { results } = data;
             dispatch({
                 type: SEARCH_CHARACTERS,
                 payload: results
             })
         } else {
-            console.log(state.characters)
             if(state.characters.length !== 0)  {
                return dispatch({
                 type: SEARCH_CHARACTERS,
@@ -63,7 +61,7 @@ import { SEARCH_CHARACTERS, SET_LOADING  } from '../types';
             const { data: { data } } = await axios.get(
                 `https://gateway.marvel.com:443/v1/public/characters?&ts=${ts}&apikey=${publicKey}&hash=${hash}&limit=${30}`
             );
-            console.log(data)
+
             const { results } = data;
             dispatch({
                 type: SEARCH_CHARACTERS,
@@ -72,9 +70,7 @@ import { SEARCH_CHARACTERS, SET_LOADING  } from '../types';
         }
 		
 	  }
-     //Get Character
-    
-     //set Loading
+   
      const setLoading = () => dispatch({ type: SET_LOADING})
 
      return (

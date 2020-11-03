@@ -9,7 +9,6 @@ export default (state, action) => {
                 loading: true
             }
         case SEARCH_CHARACTERS:
-            console.log(state)
             return {
                 ...state, 
                 characters: action.payload,
