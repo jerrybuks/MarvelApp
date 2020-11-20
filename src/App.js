@@ -6,11 +6,12 @@ import Search from './components/characters/Search';
 import About from './components/pages/About';
 import Character from './components/character/Character';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import MarvelState from './context/marvel/marvelState';
+import store from './redux/store';
+import { Provider } from 'react-redux'
 
 const App = () => {
 	return (
-		<MarvelState>
+		<Provider store={store}>
 			<Router>
 				<div className="App">
 					<Navbar />
@@ -21,8 +22,8 @@ const App = () => {
 								path="/"
 								render={(props) => (
 									<Fragment>
-										<Search />
-										<Characters />
+										<Search {...props}/>
+										<Characters {...props}/>
 									</Fragment>
 								)}
 							/>
@@ -32,7 +33,7 @@ const App = () => {
 					</div>
 				</div>
 			</Router>
-		</MarvelState>
+		</Provider>
 	);
 };
 

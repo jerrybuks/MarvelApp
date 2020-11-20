@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
-import MarvelContext from '../../context/marvel/marvelContext'
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCharactersStart } from '../../redux/marvel/marvel.slice';
 
 
 export default function Search(props) {
-	const marvelContext = useContext(MarvelContext)
-
+	const dispatch = useDispatch()
+	
 	const [ text, setText ] = useState('');
 	const onChange = (e) => {
 		setText(e.target.value);
@@ -12,8 +13,8 @@ export default function Search(props) {
 	
 	useEffect(
 		() => {
-		marvelContext.searchCharacters(text);
-            // eslint-disable-next-line       
+		dispatch(getCharactersStart(text))
+        // eslint-disable-next-line       
 		}, [ text ] );
 	return (
 		<div>
