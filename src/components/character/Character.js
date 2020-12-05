@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const Character = (props) => {
 	const { location: { state: { characterInfo } } } = props;
-	console.log(characterInfo);
 	const { name, description, comics,  events, series , stories , thumbnail } = characterInfo;
 	const { path, extension } = thumbnail;
 
