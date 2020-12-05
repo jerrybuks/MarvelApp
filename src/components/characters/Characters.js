@@ -1,7 +1,6 @@
-import React, { useContext} from 'react'
+import React from 'react'
 import CharacterItem from './CharacterItem';
 import Spinner from '../layout/Spinner'
-import MarvelContext from '../../context/marvel/marvelContext'
 import CharNotFound from '../layout/Alert';
 
 
@@ -12,9 +11,6 @@ const characterStyle = {
 }
 
 const Users = () => {
-    const marvelContext = useContext(MarvelContext)
-
-    const {characters, loading} = marvelContext
     if (loading) return <Spinner />
 
     return (

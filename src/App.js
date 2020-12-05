@@ -6,12 +6,10 @@ import Search from './components/characters/Search';
 import About from './components/pages/About'
 import Character from './components/character/Character'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import MarvelState from './context/marvel/marvelState'
 
  const App = () => {
 
 	return (
-		<MarvelState>
 			<Router>	
 			<div className="App">
 				<Navbar />
@@ -31,7 +29,6 @@ import MarvelState from './context/marvel/marvelState'
 				</div>
 			</div>
 		</Router>
-		</MarvelState>
 	)
 }
 
