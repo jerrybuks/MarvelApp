@@ -5,32 +5,34 @@ import Characters from './components/characters/Characters';
 import Search from './components/characters/Search';
 import About from './components/pages/About'
 import Character from './components/character/Character'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { MarvelProvider } from './mobx/marvelState';
 
- const App = () => {
+const App = () => {
 
 	return (
-			<Router>	
-			<div className="App">
-				<Navbar />
-				<div className="container">
-					<Switch>
-						<Route exact  path="/" render={props => (
-							<Fragment>
-								<Search />
-								<Characters />	
-							</Fragment>
-						)} />
-						<Route exact path='/about' component={About} />
-						<Route exact path="/characters/:name" render={props => (
-						<Character {...props} />
-						)}	/>
-					</Switch>
+		<MarvelProvider>
+			<Router>
+				<div className="App">
+					<Navbar />
+					<div className="container">
+						<Switch>
+							<Route exact path="/" render={props => (
+								<Fragment>
+									<Search />
+									<Characters />
+								</Fragment>
+							)} />
+							<Route exact path='/about' component={About} />
+							<Route exact path="/characters/:name" render={props => (
+								<Character {...props} />
+							)} />
+						</Switch>
+					</div>
 				</div>
-			</div>
-		</Router>
+			</Router>
+		</MarvelProvider>
 	)
 }
 
 export default App;
- 

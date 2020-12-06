@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { MarvelContext } from '../../mobx/marvelState';
 
 export default function Search(props) {
-	
+	const { searchCharacters } = useContext(MarvelContext)
 	const [ text, setText ] = useState('');
 	const onChange = (e) => {
 		setText(e.target.value);
@@ -9,7 +10,7 @@ export default function Search(props) {
 	
 	useEffect(
 		() => {
-		//searchCharacters(text);
+		searchCharacters(text);
             // eslint-disable-next-line       
 		}, [ text ] );
 	return (
