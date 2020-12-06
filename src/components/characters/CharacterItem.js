@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+
 const CharacterItem = ({ characterInfo }) => {
 	const { thumbnail, name } = characterInfo;
 	const { path, extension } = thumbnail;

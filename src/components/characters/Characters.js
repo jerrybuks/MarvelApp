@@ -4,6 +4,8 @@ import Spinner from "../layout/Spinner";
 import CharNotFound from "../layout/Alert";
 import { MarvelContext } from "../../mobx/marvelState";
 import { observer } from "mobx-react-lite";
+import { toJS } from "mobx";
+
 
 const characterStyle = {
   display: "grid",
@@ -21,7 +23,7 @@ const Users = observer(() => {
         <CharNotFound />
       ) : (
         characters.map((character) => (
-          <CharacterItem key={character.id} characterInfo={character} />
+          <CharacterItem key={character.id} characterInfo={toJS(character)} />
         ))
       )}
     </div>
