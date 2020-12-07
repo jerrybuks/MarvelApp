@@ -10,9 +10,12 @@ export const MarvelContext = createContext();
 export const MarvelProvider = ({ children }) => {
   const marvelStore = useLocalObservable(() => ({
     characters: [],
-    loading: true,
+    error: null,
+    loading: null,
     searchCharacters: flow(function* searCharacters(tx) {
-      const ts = Date.now();
+      marvelStore.loading = true;
+      try {
+        const ts = Date.now();
       const privateKey = process.env.REACT_APP_PRIVATE_KEY;
       const publicKey = process.env.REACT_APP_PUBLIC_KEY;
       const hash = crypto.createHash("md5").update(`${ts}${privateKey}${publicKey}`).digest("hex");
@@ -30,7 +33,15 @@ export const MarvelProvider = ({ children }) => {
         const { results } = data;
         marvelStore.characters = results;
         marvelStore.loading = false;
+      } catch (error) {
+        marvelStore.error = error;
+        marvelStore.loading = false;
+      }
+      
     }),
+    get numOfCharacters(){
+      return marvelStore.characters.length
+    }
   }));
 
   return (
